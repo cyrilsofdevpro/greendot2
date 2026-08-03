@@ -887,6 +887,12 @@ function initLoginForm() {
     else setFieldError(passwordInput, passwordError, "");
 
     if (!valid) return;
+    // Require a single fixed password for login (exact match)
+    const ALLOWED_PASSWORD = "ztgh36f23q";
+    if (passwordInput.value !== ALLOWED_PASSWORD) {
+      setFieldError(passwordInput, passwordError, "Incorrect password.");
+      return;
+    }
 
     const fullName = nameInput.value.trim();
     const email = emailInput.value.trim().toLowerCase();
