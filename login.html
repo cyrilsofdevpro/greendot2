@@ -273,6 +273,7 @@ html, body { max-width: 100vw; }
               <i class="fa-solid fa-lock"></i>
               <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
               <i class="fa-solid fa-eye field-toggle" id="toggle-login-password" role="button" tabindex="0" aria-label="Show password"></i>
+              <i class="fa-solid fa-clipboard field-toggle" id="paste-login-password" role="button" tabindex="0" aria-label="Paste password" title="Paste password" style="right:74px;"></i>
               <i class="fa-regular fa-copy field-toggle" id="copy-login-password" role="button" tabindex="0" aria-label="Copy password" style="right:44px;"></i>
             </div>
             <div class="field-error" id="login-password-error"></div>
@@ -423,6 +424,22 @@ function initLoginForm() {
         showToast('Password copied to clipboard.', 'success');
       } catch (err) {
         showToast('Unable to copy password.', 'error');
+      }
+    });
+  }
+  const pasteBtn = document.getElementById('paste-login-password');
+  if (pasteBtn) {
+    pasteBtn.addEventListener('click', async () => {
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text) {
+          passwordInput.value = text;
+          showToast('Password pasted from clipboard.', 'success');
+        } else {
+          showToast('Clipboard is empty.', 'info');
+        }
+      } catch (err) {
+        showToast('Unable to read from clipboard.', 'error');
       }
     });
   }
