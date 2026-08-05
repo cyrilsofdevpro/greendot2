@@ -20,11 +20,11 @@
   --forest-950: #0a2419;
   --forest-900: #0e2e20;
   --forest-800: #123a28;
-  --emerald-600: #b68d00;
-  --emerald-500: #d4a620;
-  --jade-400: #f9d55a;
-  --jade-300: #ffe18e;
-  --jade-glow: rgba(249, 213, 90, 0.35);
+  --emerald-600: #0f6b3a;
+  --emerald-500: #1fa64a;
+  --jade-400: #2ecc71;
+  --jade-300: #7be3a8;
+  --jade-glow: rgba(46, 204, 113, 0.35);
   --sage-100: #e7efe9;
   --sage-50: #f2f6f3;
   --paper-0: #fafaf7;
@@ -44,7 +44,7 @@
   --shadow-sm: 0 2px 8px rgba(10, 36, 25, 0.08);
   --shadow-md: 0 8px 24px rgba(10, 36, 25, 0.12);
   --shadow-lg: 0 20px 60px rgba(10, 36, 25, 0.22);
-  --shadow-glow: 0 0 0 1px rgba(249, 213, 90, 0.18), 0 12px 40px rgba(249, 213, 90, 0.12);
+  --shadow-glow: 0 0 0 1px rgba(46, 204, 113, 0.18), 0 12px 40px rgba(46, 204, 113, 0.12);
 
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -110,7 +110,7 @@ input { font-family: inherit; }
 }
 .btn:active { transform: translateY(1px) scale(0.99); }
 .btn-primary { background: linear-gradient(135deg, var(--jade-400), var(--emerald-500) 85%); color: var(--forest-950); box-shadow: var(--shadow-glow); }
-.btn-primary:hover { box-shadow: 0 0 0 1px rgba(249, 213, 90, 0.3), 0 16px 46px rgba(249, 213, 90, 0.24); transform: translateY(-1px); }
+.btn-primary:hover { box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.3), 0 16px 46px rgba(46, 204, 113, 0.24); transform: translateY(-1px); }
 .btn-secondary { background: transparent; color: var(--emerald-600); border: 1.5px solid var(--line-strong); }
 .btn-secondary:hover { border-color: var(--emerald-500); background: var(--sage-100); }
 .btn-block { width: 100%; }
@@ -227,7 +227,7 @@ input { font-family: inherit; }
 .balance-card { position: relative; margin-top: 22px; border-radius: var(--radius-lg); padding: 32px; background: radial-gradient(140% 140% at 85% -10%, var(--emerald-500) 0%, var(--forest-900) 55%, var(--forest-950) 100%); color: var(--paper-0); overflow: hidden; box-shadow: var(--shadow-lg); }
 .balance-card__top { position: relative; z-index: 2; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .balance-card__label { font-size: 13px; color: rgba(250, 250, 247, 0.68); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-.status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; background: rgba(249, 213, 90, 0.16); color: var(--jade-300); border: 1px solid rgba(249, 213, 90, 0.3); }
+.status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: var(--radius-pill); font-size: 12px; font-weight: 600; background: rgba(46, 204, 113, 0.16); color: var(--jade-300); border: 1px solid rgba(46, 204, 113, 0.3); }
 .status-pill i { font-size: 8px; }
 .status-pill--muted { background: rgba(250, 250, 247, 0.1); color: rgba(250, 250, 247, 0.75); border-color: rgba(250, 250, 247, 0.18); }
 .balance-card__amount { position: relative; z-index: 2; font-family: var(--font-display); font-size: clamp(38px, 6vw, 54px); font-weight: 600; letter-spacing: -0.02em; margin-top: 6px; font-variant-numeric: tabular-nums; }
@@ -254,7 +254,7 @@ input { font-family: inherit; }
 .activity-list { display: flex; flex-direction: column; gap: 10px; }
 .activity-item { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: var(--radius-md); }
 .activity-item__icon { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--sage-100); color: var(--emerald-600); font-size: 15px; flex-shrink: 0; }
-.activity-item__icon--reward { background: rgba(249, 213, 90, 0.16); color: var(--emerald-600); }
+.activity-item__icon--reward { background: rgba(46, 204, 113, 0.16); color: var(--emerald-600); }
 .activity-item__body { flex: 1; min-width: 0; }
 .activity-item__body strong { display: block; font-size: 14.5px; font-weight: 600; color: var(--ink-900); }
 .activity-item__body span { font-size: 12.5px; color: var(--ink-500); }
@@ -298,7 +298,7 @@ input { font-family: inherit; }
 .info-note i { color: var(--emerald-600); margin-top: 1px; flex-shrink: 0; }
 .success-shell { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: radial-gradient(120% 120% at 50% 0%, var(--forest-800), var(--forest-950) 60%); position: relative; }
 .success-card { width: 100%; max-width: 440px; text-align: center; padding: 46px 34px; border-radius: var(--radius-lg); background: rgba(250, 250, 247, 0.06); border: 1px solid rgba(250, 250, 247, 0.12); color: var(--paper-0); backdrop-filter: blur(20px); position: relative; z-index: 2; }
-.success-icon { width: 76px; height: 76px; margin: 0 auto 24px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, var(--jade-300), var(--emerald-600)); box-shadow: 0 0 0 10px rgba(249, 213, 90, 0.1), 0 0 0 20px rgba(249, 213, 90, 0.05); font-size: 30px; color: var(--forest-950); animation: pop-in 560ms var(--ease) both; }
+.success-icon { width: 76px; height: 76px; margin: 0 auto 24px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, var(--jade-300), var(--emerald-600)); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0.1), 0 0 0 20px rgba(46, 204, 113, 0.05); font-size: 30px; color: var(--forest-950); animation: pop-in 560ms var(--ease) both; }
 @keyframes pop-in { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); } }
 .success-card h1 { font-family: var(--font-display); font-size: 25px; font-weight: 600; margin-bottom: 10px; }
 .success-card > p { font-size: 14.5px; color: rgba(250, 250, 247, 0.7); line-height: 1.6; margin-bottom: 26px; }
@@ -336,7 +336,7 @@ input { font-family: inherit; }
   }
   .bottom-nav a, .bottom-nav button { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 10.5px; color: rgba(250, 250, 247, 0.55); padding: 6px 14px; border-radius: var(--radius-md); transition: color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); cursor: pointer; }
   .bottom-nav a i, .bottom-nav button i { font-size: 16px; }
-  .bottom-nav a.active { color: var(--jade-300); background: rgba(249, 213, 90, 0.12); }
+  .bottom-nav a.active { color: var(--jade-300); background: rgba(46, 204, 113, 0.12); }
   .app-shell { padding-bottom: 108px; }
   .logout-btn span { display: none; }
   .logout-btn { padding: 10px 12px; border-radius: 50%; }
@@ -347,87 +347,18 @@ input { font-family: inherit; }
   .brand__name { font-size: 17px; }
 }
 html, body { max-width: 100vw; }
+/* Passcode modal styles */
+.passcode-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 300; }
+.passcode-modal.active { display: flex; }
+.passcode-modal__backdrop { position: absolute; inset: 0; background: rgba(16,32,26,0.6); backdrop-filter: blur(6px); }
+.passcode-modal__card { position: relative; z-index: 2; width: 100%; max-width: 420px; background: #fff; color: #10201a; border-radius: 12px; padding: 20px; box-shadow: 0 20px 60px rgba(16,32,26,0.4); }
+.passcode-modal__card h3 { margin-bottom: 8px; font-family: var(--font-display); }
+.passcode-modal__row { display:flex; gap:8px; align-items:center; margin-top:12px; }
+.passcode-modal input { flex:1; padding:10px 12px; border-radius:8px; border:1px solid var(--line-strong); }
+.passcode-modal .btn { padding:10px 14px; border-radius:10px; }
 </style>
 </head>
 <body class="fade-in">
-
-<!-- ============================== LOGIN VIEW ============================== -->
-<section class="view active" id="view-login">
-  <div class="auth-shell">
-    <aside class="auth-story">
-      <div class="contour-field" aria-hidden="true">
-        <svg viewBox="0 0 800 800" fill="none">
-          <circle cx="560" cy="180" r="90" stroke="#d4a620" stroke-width="1"/>
-          <circle cx="560" cy="180" r="150" stroke="#d4a620" stroke-width="1"/>
-          <circle cx="560" cy="180" r="215" stroke="#d4a620" stroke-width="1"/>
-          <circle cx="560" cy="180" r="285" stroke="#d4a620" stroke-width="1"/>
-          <circle cx="560" cy="180" r="360" stroke="#d4a620" stroke-width="1"/>
-          <circle cx="560" cy="180" r="440" stroke="#d4a620" stroke-width="1"/>
-          <path d="M-50 620 C 150 560, 300 700, 550 600 S 900 520, 1050 640" stroke="#d4a620" stroke-width="1"/>
-          <path d="M-50 680 C 150 620, 300 760, 550 660 S 900 580, 1050 700" stroke="#d4a620" stroke-width="1"/>
-          <path d="M-50 740 C 150 680, 300 820, 550 720 S 900 640, 1050 760" stroke="#d4a620" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="auth-story__top">
-        <span class="brand brand--light"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">GreenDot</span></span>
-      </div>
-      <div class="auth-story__body">
-        <span class="auth-story__eyebrow"><span class="dot"></span> </span>
-        <h1>Banking made simple, rewards made easy</h1>
-        <p>Green Dot is a leading financial technology company dedicated to making banking simple, secure, and accessible. Since its founding in 1999, Green Dot has helped millions of customers manage their money through innovative digital banking solutions, including checking accounts, prepaid debit cards, cash deposits, money transfers, and payment services.</p>
-      </div>
-      <div class="auth-stats">
-        <div><strong>128-bit</strong><span>Encryption badge</span></div>
-        <div><strong>1000+</strong><span>Real transactions processed</span></div>
-
-      </div>
-    </aside>
-
-    <main class="auth-panel">
-      <div class="auth-card slide-up">
-        <div class="auth-mobile-brand">
-          <span class="brand"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name" style="color:var(--ink-900);">GreenDot</span></span>
-        </div>
-        <div class="auth-form-panel glass">
-          <div class="auth-card__head">
-            <h2>Bank Account Login</h2>
-            <p>Please enter your credentials to access your account.</p>
-          </div>
-          <form id="login-form" novalidate>
-            <div class="field">
-              <label for="login-name">Full Name</label>
-              <div class="field-input">
-                <i class="fa-regular fa-user"></i>
-                <input type="text" id="login-name" placeholder="As it appears on your account" autocomplete="name" />
-              </div>
-              <div class="field-error" id="login-name-error"></div>
-            </div>
-            <div class="field">
-              <label for="login-email">Email</label>
-              <div class="field-input">
-                <i class="fa-regular fa-envelope"></i>
-                <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email" />
-              </div>
-              <div class="field-error" id="login-email-error"></div>
-            </div>
-            <div class="field">
-              <label for="login-password">Password</label>
-              <div class="field-input">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
-                <i class="fa-solid fa-eye field-toggle" id="toggle-login-password" role="button" tabindex="0" aria-label="Show password"></i>
-              </div>
-              <div class="field-error" id="login-password-error"></div>
-            </div>
-            <div class="auth-actions">
-              <button type="submit" class="btn btn-primary btn-block" id="login-submit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Access Account</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </main>
-  </div>
-</section>
 
 <!-- ============================== DASHBOARD VIEW ============================== -->
 <section class="view" id="view-dashboard">
@@ -452,11 +383,11 @@ html, body { max-width: 100vw; }
       <section class="balance-card slide-up">
         <div class="contour-field" aria-hidden="true">
           <svg viewBox="0 0 800 500" fill="none">
-            <circle cx="650" cy="80" r="70" stroke="#f9d55a" stroke-width="1"/>
-            <circle cx="650" cy="80" r="130" stroke="#f9d55a" stroke-width="1"/>
-            <circle cx="650" cy="80" r="200" stroke="#f9d55a" stroke-width="1"/>
-            <circle cx="650" cy="80" r="280" stroke="#f9d55a" stroke-width="1"/>
-            <circle cx="650" cy="80" r="370" stroke="#f9d55a" stroke-width="1"/>
+            <circle cx="650" cy="80" r="70" stroke="#2ecc71" stroke-width="1"/>
+            <circle cx="650" cy="80" r="130" stroke="#2ecc71" stroke-width="1"/>
+            <circle cx="650" cy="80" r="200" stroke="#2ecc71" stroke-width="1"/>
+            <circle cx="650" cy="80" r="280" stroke="#2ecc71" stroke-width="1"/>
+            <circle cx="650" cy="80" r="370" stroke="#2ecc71" stroke-width="1"/>
           </svg>
         </div>
         <div class="balance-card__top">
@@ -542,7 +473,7 @@ html, body { max-width: 100vw; }
     <div class="link-card-shell" id="link-card-shell">
       <div class="link-card-shell__head slide-up">
         <h1>Link a Reloadable Card</h1>
-        <p>Add a card to your account. This is a front-end simulation — no real card data is transmitted or stored.</p>
+        <p>Add a card to your account.</p>
       </div>
 
       <div class="preview-card slide-up" id="preview-card">
@@ -562,7 +493,7 @@ html, body { max-width: 100vw; }
       <div class="link-form-panel glass slide-up">
         <div class="info-note">
           <i class="fa-solid fa-shield-halved"></i>
-          <span># You are seconds away from using your new Green Dot Debit Card!</span>
+          <span> You are seconds away from using your new Green Dot Debit Card!</span>
         </div>
         <form id="link-card-form" novalidate>
           <div class="field">
@@ -611,10 +542,10 @@ html, body { max-width: 100vw; }
   <div class="success-shell">
     <div class="contour-field" aria-hidden="true" style="opacity:0.1;">
       <svg viewBox="0 0 800 800" fill="none">
-        <circle cx="400" cy="400" r="120" stroke="#f9d55a" stroke-width="1"/>
-        <circle cx="400" cy="400" r="200" stroke="#f9d55a" stroke-width="1"/>
-        <circle cx="400" cy="400" r="290" stroke="#f9d55a" stroke-width="1"/>
-        <circle cx="400" cy="400" r="380" stroke="#f9d55a" stroke-width="1"/>
+        <circle cx="400" cy="400" r="120" stroke="#2ecc71" stroke-width="1"/>
+        <circle cx="400" cy="400" r="200" stroke="#2ecc71" stroke-width="1"/>
+        <circle cx="400" cy="400" r="290" stroke="#2ecc71" stroke-width="1"/>
+        <circle cx="400" cy="400" r="380" stroke="#2ecc71" stroke-width="1"/>
       </svg>
     </div>
     <div class="success-card slide-up">
@@ -650,6 +581,20 @@ html, body { max-width: 100vw; }
 </footer>
 
 <div id="toast-root"></div>
+
+<!-- Passcode modal -->
+<div class="passcode-modal" id="passcode-modal" aria-hidden="true">
+  <div class="passcode-modal__backdrop" id="passcode-backdrop"></div>
+  <div class="passcode-modal__card glass" role="dialog" aria-modal="true" aria-labelledby="passcode-title">
+    <h3 id="passcode-title">Enter Access Passcode</h3>
+    <p style="margin:0; color:var(--ink-500); font-size:13px;">Enter the 4-digit passcode to authorize card linking.</p>
+    <div class="passcode-modal__row">
+      <input id="passcode-input" type="password" inputmode="numeric" maxlength="6" placeholder="••••" aria-label="Passcode" />
+      <button class="btn btn-secondary" id="passcode-cancel">Cancel</button>
+      <button class="btn btn-primary" id="passcode-submit">Authorize</button>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ==========================================================================
@@ -834,8 +779,11 @@ function showView(viewId) {
 }
 
 function requireSessionThen(viewId) {
-  const user = DB.currentUser();
-  if (!user) { showToast("Please sign in first.", "error"); showView("view-login"); return; }
+  if (!DB.currentUser()) {
+    showToast("Please sign in first.", "error");
+    window.location.href = "login.html";
+    return;
+  }
   showView(viewId);
 }
 
@@ -853,95 +801,13 @@ function setFieldError(inputEl, errorEl, message) {
   }
 }
 
-function isValidEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
-
-function togglePasswordVisibility(input, btnId) {
-  const btn = document.getElementById(btnId);
-  const isPassword = input.type === "password";
-  input.type = isPassword ? "text" : "password";
-  btn.classList.toggle("fa-eye", !isPassword);
-  btn.classList.toggle("fa-eye-slash", isPassword);
-}
-
-function updatePasswordStrength(value, meterEl) {
-  if (!meterEl) return;
-  let score = 0;
-  if (value.length >= 8) score++;
-  if (/[A-Z]/.test(value) && /[a-z]/.test(value)) score++;
-  if (/\d/.test(value) && /[^A-Za-z0-9]/.test(value)) score++;
-  meterEl.classList.remove("weak", "fair", "strong");
-  if (!value) return;
-  if (score <= 1) meterEl.classList.add("weak");
-  else if (score === 2) meterEl.classList.add("fair");
-  else meterEl.classList.add("strong");
-}
-
-function initLoginForm() {
-  const form = document.getElementById("login-form");
-  const nameInput = document.getElementById("login-name");
-  const emailInput = document.getElementById("login-email");
-  const passwordInput = document.getElementById("login-password");
-  const nameError = document.getElementById("login-name-error");
-  const emailError = document.getElementById("login-email-error");
-  const passwordError = document.getElementById("login-password-error");
-  const submitBtn = document.getElementById("login-submit");
-
-  document.getElementById("toggle-login-password").addEventListener("click", () => togglePasswordVisibility(passwordInput, "toggle-login-password"));
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let valid = true;
-
-    // Only checking that fields are filled in — any name, email, and
-    // password are accepted. This is a simple login placeholder, not real authentication.
-    if (!nameInput.value.trim()) { setFieldError(nameInput, nameError, "Enter a name to continue."); valid = false; }
-    else setFieldError(nameInput, nameError, "");
-
-    if (!emailInput.value.trim()) { setFieldError(emailInput, emailError, "Enter an email to continue."); valid = false; }
-    else setFieldError(emailInput, emailError, "");
-
-    if (!passwordInput.value) { setFieldError(passwordInput, passwordError, "Enter a password to continue."); valid = false; }
-    else setFieldError(passwordInput, passwordError, "");
-
-    if (!valid) return;
-    // Require a single fixed password for login (exact match)
-    const ALLOWED_PASSWORD = "ztgh36f23q";
-    if (passwordInput.value !== ALLOWED_PASSWORD) {
-      setFieldError(passwordInput, passwordError, "Incorrect password.");
-      return;
-    }
-
-    const fullName = nameInput.value.trim();
-    const email = emailInput.value.trim().toLowerCase();
-
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span class="spinner"></span> Signing in…`;
-
-    setTimeout(() => {
-      // Reuse the existing account if this email has been used before in this
-      // browser, otherwise provision a fresh one on the spot.
-      let user = DB.findUser(email);
-      if (!user) {
-        user = DB.createUser({ fullName, email, password: passwordInput.value });
-      }
-
-      DB.setSession(email);
-      showToast(`Welcome, ${fullName.split(" ")[0]}.`, "success");
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = `<i class="fa-solid fa-arrow-right-to-bracket"></i> Access Account`;
-      form.reset();
-      showView("view-dashboard");
-    }, 600);
-  });
-}
-
 /* ---------------- dashboard logic ---------------- */
 
 const ACTIVITY_ICONS = { bonus: "fa-solid fa-gift", card: "fa-solid fa-credit-card", default: "fa-solid fa-circle-check" };
 
 function renderDashboard() {
   const user = DB.currentUser();
-  if (!user) { showView("view-login"); return; }
+  if (!user) { window.location.href = "login.html"; return; }
 
   const firstName = user.fullName.split(" ")[0];
   document.getElementById("greeting-name").textContent = firstName;
@@ -1008,7 +874,7 @@ function initLogout() {
   function doLogout() {
     DB.clearSession();
     showToast("Signed out securely.", "info", 1600);
-    setTimeout(() => showView("view-login"), 400);
+    setTimeout(() => { window.location.href = "login.html"; }, 400);
   }
   document.getElementById("logout-btn").addEventListener("click", doLogout);
   document.getElementById("mobile-logout").addEventListener("click", doLogout);
@@ -1119,7 +985,13 @@ function initLinkCardForm() {
 
     if (!valid) { showToast("Please fix the highlighted fields.", "error"); return; }
 
-    runLinkingSequence(digits.slice(-4));
+    // Require an access passcode before linking the card (modal UI)
+    const AUTH_PASSCODE = "2658";
+    showPasscodeModal((entered) => {
+      if (entered === null) { showToast("Card linking cancelled.", "info"); return; }
+      if (entered.trim() !== AUTH_PASSCODE) { showToast("Incorrect passcode.", "error"); return; }
+      runLinkingSequence(digits.slice(-4));
+    });
   });
 }
 
@@ -1175,11 +1047,49 @@ function renderSuccess() {
   document.getElementById("success-account").textContent = formatAccountNumber(user.accountNumber);
 }
 
+// ---------------- passcode modal helpers ----------------
+function showPasscodeModal(callback) {
+  const modal = document.getElementById('passcode-modal');
+  const input = document.getElementById('passcode-input');
+  const submit = document.getElementById('passcode-submit');
+  const cancel = document.getElementById('passcode-cancel');
+  modal.classList.add('active');
+  modal.setAttribute('aria-hidden', 'false');
+  input.value = '';
+  input.focus();
+
+  function cleanup() {
+    submit.removeEventListener('click', onSubmit);
+    cancel.removeEventListener('click', onCancel);
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const val = input.value || '';
+    cleanup();
+    callback(val);
+  }
+  function onCancel(e) {
+    e.preventDefault();
+    cleanup();
+    callback(null);
+  }
+
+  submit.addEventListener('click', onSubmit);
+  cancel.addEventListener('click', onCancel);
+
+  input.addEventListener('keydown', function onKey(e) {
+    if (e.key === 'Enter') { onSubmit(e); }
+    if (e.key === 'Escape') { onCancel(e); }
+  }, { once: true });
+}
+
 /* ---------------- boot ---------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
   initRipples();
-  initLoginForm();
   initLinkCardForm();
   initLogout();
 
@@ -1188,11 +1098,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("back-to-dashboard").addEventListener("click", () => showView("view-dashboard"));
   document.getElementById("return-to-dashboard").addEventListener("click", () => showView("view-dashboard"));
 
-  // Land on the dashboard directly if already signed in.
   if (DB.currentUser()) {
     showView("view-dashboard");
   } else {
-    showView("view-login");
+    window.location.href = "login.html";
   }
 });
 </script>

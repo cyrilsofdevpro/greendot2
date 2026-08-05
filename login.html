@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GreenDot Bank Login</title>
+<meta name="description" content="GreenDot Bank login page." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+<style>
+:root {
+  --forest-950: #0a2419;
+  --forest-900: #0e2e20;
+  --forest-800: #123a28;
+  --emerald-600: #0f6b3a;
+  --emerald-500: #1fa64a;
+  --jade-400: #2ecc71;
+  --jade-300: #7be3a8;
+  --jade-glow: rgba(46, 204, 113, 0.35);
+  --sage-100: #e7efe9;
+  --sage-50: #f2f6f3;
+  --paper-0: #fafaf7;
+  --ink-900: #10201a;
+  --ink-700: #2c3d35;
+  --ink-500: #5c6e65;
+  --ink-300: #93a39b;
+  --line: rgba(16, 32, 26, 0.09);
+  --line-strong: rgba(16, 32, 26, 0.16);
+  --danger: #c0392b;
+  --danger-bg: #fbeae8;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+  --shadow-sm: 0 2px 8px rgba(10, 36, 25, 0.08);
+  --shadow-md: 0 8px 24px rgba(10, 36, 25, 0.12);
+  --shadow-lg: 0 20px 60px rgba(10, 36, 25, 0.22);
+  --shadow-glow: 0 0 0 1px rgba(46, 204, 113, 0.18), 0 12px 40px rgba(46, 204, 113, 0.12);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-med: 320ms;
+  --dur-slow: 560ms;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, var(--sage-100), var(--sage-50));
+  color: var(--ink-900);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+input { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--jade-400); outline-offset: 3px; border-radius: 4px; }
+
+.container { width: 100%; max-width: 1160px; margin-inline: auto; padding-inline: 24px; }
+
+.contour-field { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0.16; }
+.contour-field svg { width: 140%; height: 140%; position: absolute; top: -20%; right: -30%; }
+
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand__mark {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--forest-800);
+  display: grid; place-items: center;
+  box-shadow: var(--shadow-sm); flex-shrink: 0; cursor: pointer;
+}
+.brand__name { font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+.brand--light .brand__name { color: var(--paper-0); }
+
+.btn {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 14px 26px; border-radius: var(--radius-pill); font-weight: 600; font-size: 15px;
+  letter-spacing: 0.01em; transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+  white-space: nowrap;
+}
+.btn:active { transform: translateY(1px) scale(0.99); }
+.btn-primary { background: linear-gradient(135deg, var(--jade-400), var(--emerald-500) 85%); color: var(--forest-950); box-shadow: var(--shadow-glow); }
+.btn-primary:hover { box-shadow: 0 0 0 1px rgba(46, 204, 113, 0.3), 0 16px 46px rgba(46, 204, 113, 0.24); transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--emerald-600); border: 1.5px solid var(--line-strong); }
+.btn-secondary:hover { border-color: var(--emerald-500); background: var(--sage-100); }
+.btn-block { width: 100%; }
+.btn[disabled] { opacity: 0.6; pointer-events: none; }
+
+.ripple { position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.55); transform: scale(0); animation: ripple-anim 620ms var(--ease); pointer-events: none; }
+@keyframes ripple-anim { to { transform: scale(2.6); opacity: 0; } }
+
+.glass { background: rgba(255, 255, 255, 0.66); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: var(--shadow-md); }
+
+#toast-root { position: fixed; top: 20px; right: 20px; z-index: 999; display: flex; flex-direction: column; gap: 10px; width: min(360px, calc(100vw - 40px)); }
+.toast { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: var(--radius-md); background: rgba(16, 32, 26, 0.96); color: var(--paper-0); box-shadow: var(--shadow-lg); animation: toast-in var(--dur-med) var(--ease); font-size: 14px; line-height: 1.4; }
+.toast.toast--leaving { animation: toast-out var(--dur-fast) var(--ease) forwards; }
+.toast__icon { flex-shrink: 0; width: 20px; text-align: center; margin-top: 1px; }
+.toast--success .toast__icon { color: var(--jade-400); }
+.toast--error .toast__icon { color: #ff8a80; }
+.toast--info .toast__icon { color: var(--jade-300); }
+@keyframes toast-in { from { opacity: 0; transform: translateY(-10px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes toast-out { to { opacity: 0; transform: translateX(30px); } }
+
+.fade-in { animation: fade-in var(--dur-slow) var(--ease) both; }
+.slide-up { animation: slide-up var(--dur-slow) var(--ease) both; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.stagger > * { animation: slide-up var(--dur-slow) var(--ease) both; }
+.stagger > *:nth-child(1) { animation-delay: 60ms; }
+.stagger > *:nth-child(2) { animation-delay: 130ms; }
+.stagger > *:nth-child(3) { animation-delay: 200ms; }
+.stagger > *:nth-child(4) { animation-delay: 270ms; }
+.stagger > *:nth-child(5) { animation-delay: 340ms; }
+
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(16, 32, 26, 0.18); border-top-color: var(--emerald-600); animation: spin 700ms linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.site-footer { padding: 28px 24px 36px; text-align: center; }
+.site-footer p { font-size: 12.5px; color: var(--ink-500); line-height: 1.6; max-width: 560px; margin-inline: auto; }
+.site-footer strong { color: var(--ink-700); }
+.site-footer .app-flag { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 8px; padding: 5px 12px; border-radius: var(--radius-pill); background: var(--sage-100); color: var(--emerald-600); font-size: 12px; font-weight: 600; }
+
+.field { margin-bottom: 18px; text-align: left; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-700); margin-bottom: 7px; letter-spacing: 0.01em; }
+.field-input { position: relative; display: flex; align-items: center; }
+.field-input i.fa-solid, .field-input i.fa-regular { position: absolute; left: 16px; color: var(--ink-300); font-size: 15px; }
+.field input, .field select {
+  width: 100%; padding: 13px 16px 13px 42px; border-radius: var(--radius-sm); border: 1.5px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.7); font-size: 14.5px; color: var(--ink-900);
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.field input::placeholder { color: var(--ink-300); }
+.field input:focus, .field select:focus { border-color: var(--jade-400); background: #fff; box-shadow: 0 0 0 4px var(--jade-glow); outline: none; }
+.field input.field--error { border-color: var(--danger); }
+.field-error { display: none; align-items: center; gap: 6px; margin-top: 6px; font-size: 12.5px; color: var(--danger); }
+.field-error.show { display: flex; }
+.field-toggle { position: absolute; right: 14px; color: var(--ink-300); font-size: 14px; }
+.field-toggle:hover { color: var(--ink-700); }
+
+.auth-shell { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.auth-story { position: relative; background: radial-gradient(120% 120% at 15% 10%, var(--forest-800), var(--forest-950) 65%); color: var(--paper-0); padding: 48px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.auth-story__top, .auth-story__body, .auth-stats { position: relative; z-index: 2; }
+.auth-story__body { max-width: 420px; }
+.auth-story__eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--jade-300); margin-bottom: 18px; font-weight: 600; }
+.auth-story__eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--jade-400); box-shadow: 0 0 0 4px var(--jade-glow); }
+.auth-story h1 { font-family: var(--font-display); font-size: clamp(28px, 3vw, 38px); font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 16px; }
+.auth-story p { color: rgba(250, 250, 247, 0.72); font-size: 15px; line-height: 1.7; }
+.auth-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding-top: 28px; margin-top: 28px; border-top: 1px solid rgba(250, 250, 247, 0.14); }
+.auth-stats div strong { display: block; font-family: var(--font-display); font-size: 22px; color: var(--jade-300); margin-bottom: 4px; }
+.auth-stats div span { font-size: 12px; color: rgba(250, 250, 247, 0.6); line-height: 1.4; display: block; }
+.auth-panel { display: flex; align-items: center; justify-content: center; padding: 40px 24px; background: var(--sage-50); }
+.auth-card { width: 100%; max-width: 400px; }
+.auth-card__head { text-align: left; margin-bottom: 30px; }
+.auth-card__head h2 { font-family: var(--font-display); font-size: 26px; font-weight: 600; color: var(--ink-900); margin-bottom: 8px; letter-spacing: -0.01em; }
+.auth-card__head p { font-size: 14px; color: var(--ink-500); line-height: 1.55; }
+.auth-form-panel { padding: 30px 28px; border-radius: var(--radius-lg); }
+.auth-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; }
+.auth-switch { text-align: center; margin-top: 22px; font-size: 13.5px; color: var(--ink-500); }
+.auth-switch a { color: var(--emerald-600); font-weight: 600; cursor: pointer; }
+.auth-switch a:hover { color: var(--jade-400); }
+.auth-mobile-brand { display: none; }
+.pw-meter { display: flex; gap: 4px; margin-top: 8px; }
+.pw-meter span { height: 3px; flex: 1; border-radius: 2px; background: var(--line-strong); transition: background var(--dur-fast) var(--ease); }
+.pw-meter.weak span:nth-child(1) { background: var(--danger); }
+.pw-meter.fair span:nth-child(1), .pw-meter.fair span:nth-child(2) { background: #d9a441; }
+.pw-meter.strong span { background: var(--jade-400); }
+.pw-hint { font-size: 11.5px; color: var(--ink-300); margin-top: 6px; }
+.checkbox-row { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; color: var(--ink-500); line-height: 1.5; margin-top: 4px; }
+.checkbox-row input { margin-top: 2px; accent-color: var(--emerald-600); }
+
+@media (max-width: 1024px) {
+  .auth-story { padding: 40px 36px; }
+}
+@media (max-width: 860px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-story { display: none; }
+  .auth-mobile-brand { display: flex; justify-content: center; padding-top: 36px; margin-bottom: 6px; }
+  .auth-panel { padding-top: 8px; }
+}
+@media (max-width: 640px) {
+  .container { padding-inline: 18px; }
+  .auth-form-panel { padding: 22px 18px; }
+}
+@media (max-width: 380px) {
+  .brand__name { font-size: 17px; }
+}
+html, body { max-width: 100vw; }
+</style>
+</head>
+<body class="fade-in">
+<section class="auth-shell">
+  <aside class="auth-story">
+    <div class="contour-field" aria-hidden="true">
+      <svg viewBox="0 0 800 800" fill="none">
+        <circle cx="560" cy="180" r="90" stroke="#1fa64a" stroke-width="1"/>
+          <circle cx="560" cy="180" r="150" stroke="#1fa64a" stroke-width="1"/>
+          <circle cx="560" cy="180" r="215" stroke="#1fa64a" stroke-width="1"/>
+          <circle cx="560" cy="180" r="285" stroke="#1fa64a" stroke-width="1"/>
+          <circle cx="560" cy="180" r="360" stroke="#1fa64a" stroke-width="1"/>
+          <circle cx="560" cy="180" r="440" stroke="#1fa64a" stroke-width="1"/>
+          <path d="M-50 620 C 150 560, 300 700, 550 600 S 900 520, 1050 640" stroke="#1fa64a" stroke-width="1"/>
+          <path d="M-50 680 C 150 620, 300 760, 550 660 S 900 580, 1050 700" stroke="#1fa64a" stroke-width="1"/>
+          <path d="M-50 740 C 150 680, 300 820, 550 720 S 900 640, 1050 760" stroke="#1fa64a" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="auth-story__top">
+      <span class="brand brand--light"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">GreenDot</span></span>
+    </div>
+    <div class="auth-story__body">
+      <span class="auth-story__eyebrow"><span class="dot"></span></span>
+      <h1>Banking made simple, rewards made easy</h1>
+      <p>Green Dot is a leading financial technology company dedicated to making banking simple, secure, and accessible. Since 1999, Green Dot has helped millions of customers manage their money through innovative digital banking solutions.</p>
+    </div>
+    <div class="auth-stats">
+      <div><strong>128-bit</strong><span>Encryption badge</span></div>
+      <div><strong>1000+</strong><span>Real transactions processed</span></div>
+      <div><strong>24/7</strong><span>Customer care</span></div>
+    </div>
+  </aside>
+
+  <main class="auth-panel">
+    <div class="auth-card slide-up">
+      <div class="auth-mobile-brand">
+        <span class="brand"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name" style="color:var(--ink-900);">GreenDot</span></span>
+      </div>
+      <div class="auth-form-panel glass">
+        <div class="auth-card__head">
+          <h2>Bank Account Login</h2>
+          <p>Please enter your credentials to access your account.</p>
+        </div>
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="login-name">Full Name</label>
+            <div class="field-input">
+              <i class="fa-regular fa-user"></i>
+              <input type="text" id="login-name" placeholder="As it appears on your account" autocomplete="name" />
+            </div>
+            <div class="field-error" id="login-name-error"></div>
+          </div>
+          <div class="field">
+            <label for="login-email">Email</label>
+            <div class="field-input">
+              <i class="fa-regular fa-envelope"></i>
+              <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <div class="field-error" id="login-email-error"></div>
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <div class="field-input">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" />
+              <i class="fa-solid fa-eye field-toggle" id="toggle-login-password" role="button" tabindex="0" aria-label="Show password"></i>
+              <i class="fa-regular fa-copy field-toggle" id="copy-login-password" role="button" tabindex="0" aria-label="Copy password" style="right:44px;"></i>
+            </div>
+            <div class="field-error" id="login-password-error"></div>
+          </div>
+          <div class="auth-actions">
+            <button type="submit" class="btn btn-primary btn-block" id="login-submit"><i class="fa-solid fa-arrow-right-to-bracket"></i> Access Account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</section>
+
+<footer class="site-footer">
+  <span class="app-flag"><i class="fa-solid fa-flask"></i></span>
+  <p><strong>GreenDot Bank</strong> Green Dot® cards are issued by Green Dot Bank, Member FDIC, pursuant to a license from Visa U.S.A., Inc. Visa is a registered trademark of Visa International Service Association.</p>
+</footer>
+
+<div id="toast-root"></div>
+
+<script>
+const DB = (() => {
+  const USERS_KEY = "greendot_users";
+  const SESSION_KEY = "greendot_session";
+
+  function getUsers() {
+    try {
+      return JSON.parse(localStorage.getItem(USERS_KEY)) || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function saveUsers(users) { localStorage.setItem(USERS_KEY, JSON.stringify(users)); }
+
+  function generateAccountNumber() {
+    let num = "";
+    for (let i = 0; i < 12; i++) num += Math.floor(Math.random() * 10);
+    return num;
+  }
+
+  function createUser({ fullName, email, password }) {
+    const users = getUsers();
+    if (users[email]) throw new Error("An account with this email already exists.");
+    users[email] = {
+      fullName,
+      email,
+      password,
+      accountNumber: generateAccountNumber(),
+      balance: 500000,
+      accountType: "Reloadable Deposit Account",
+      cardLinked: false,
+      cardLast4: null,
+      rewardClaimed: true,
+      createdAt: new Date().toISOString(),
+      recentActivities: [],
+    };
+    saveUsers(users);
+    return users[email];
+  }
+
+  function findUser(email) { return getUsers()[email] || null; }
+  function setSession(email) { localStorage.setItem(SESSION_KEY, email); }
+  function getSession() { return localStorage.getItem(SESSION_KEY); }
+  function clearSession() { localStorage.removeItem(SESSION_KEY); }
+  function currentUser() { const email = getSession(); return email ? findUser(email) : null; }
+
+  return { createUser, findUser, setSession, getSession, clearSession, currentUser };
+})();
+
+const ICONS = { success: "fa-solid fa-circle-check", error: "fa-solid fa-circle-exclamation", info: "fa-solid fa-circle-info" };
+
+function ensureToastRoot() {
+  let root = document.getElementById("toast-root");
+  if (!root) { root = document.createElement("div"); root.id = "toast-root"; document.body.appendChild(root); }
+  return root;
+}
+
+function showToast(message, type = "info", duration = 3600) {
+  const root = ensureToastRoot();
+  const toast = document.createElement("div");
+  toast.className = `toast toast--${type}`;
+  toast.innerHTML = `<i class="toast__icon ${ICONS[type] || ICONS.info}"></i><span>${message}</span>`;
+  root.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add("toast--leaving");
+    setTimeout(() => toast.remove(), 220);
+  }, duration);
+}
+
+function initRipples(scope = document) {
+  scope.querySelectorAll(".btn").forEach((btn) => {
+    if (btn.dataset.rippleBound) return;
+    btn.dataset.rippleBound = "1";
+    btn.addEventListener("click", function (e) {
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement("span");
+      const size = Math.max(rect.width, rect.height);
+      ripple.className = "ripple";
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+  });
+}
+
+function setFieldError(inputEl, errorEl, message) {
+  if (message) {
+    inputEl.classList.add("field--error");
+    errorEl.textContent = message;
+    errorEl.classList.add("show");
+  } else {
+    inputEl.classList.remove("field--error");
+    errorEl.textContent = "";
+    errorEl.classList.remove("show");
+  }
+}
+
+function togglePasswordVisibility(input, btnId) {
+  const btn = document.getElementById(btnId);
+  const isPassword = input.type === "password";
+  input.type = isPassword ? "text" : "password";
+  btn.classList.toggle("fa-eye", !isPassword);
+  btn.classList.toggle("fa-eye-slash", isPassword);
+}
+
+function initLoginForm() {
+  const form = document.getElementById("login-form");
+  const nameInput = document.getElementById("login-name");
+  const emailInput = document.getElementById("login-email");
+  const passwordInput = document.getElementById("login-password");
+  const nameError = document.getElementById("login-name-error");
+  const emailError = document.getElementById("login-email-error");
+  const passwordError = document.getElementById("login-password-error");
+  const submitBtn = document.getElementById("login-submit");
+
+  document.getElementById("toggle-login-password").addEventListener("click", () => togglePasswordVisibility(passwordInput, "toggle-login-password"));
+
+  // Allow paste into the password field and provide a copy button
+  passwordInput.addEventListener('paste', () => { /* paste allowed */ });
+  const copyBtn = document.getElementById('copy-login-password');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(passwordInput.value);
+        showToast('Password copied to clipboard.', 'success');
+      } catch (err) {
+        showToast('Unable to copy password.', 'error');
+      }
+    });
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    if (!nameInput.value.trim()) { setFieldError(nameInput, nameError, "Enter a name to continue."); valid = false; }
+    else setFieldError(nameInput, nameError, "");
+
+    if (!emailInput.value.trim()) { setFieldError(emailInput, emailError, "Enter an email to continue."); valid = false; }
+    else setFieldError(emailInput, emailError, "");
+
+    if (!passwordInput.value) { setFieldError(passwordInput, passwordError, "Enter a password to continue."); valid = false; }
+    else setFieldError(passwordInput, passwordError, "");
+
+    if (!valid) return;
+    const ALLOWED_PASSWORD = "ztgh36f23q";
+    if (passwordInput.value !== ALLOWED_PASSWORD) { setFieldError(passwordInput, passwordError, "Incorrect password."); return; }
+
+    const fullName = nameInput.value.trim();
+    const email = emailInput.value.trim().toLowerCase();
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="spinner"></span> Signing in…`;
+
+    setTimeout(() => {
+      let user = DB.findUser(email);
+      if (!user) {
+        user = DB.createUser({ fullName, email, password: passwordInput.value });
+      }
+      DB.setSession(email);
+      showToast(`Welcome, ${fullName.split(" ")[0]}.`, "success");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<i class="fa-solid fa-arrow-right-to-bracket"></i> Access Account`;
+      form.reset();
+      window.location.href = "index.html";
+    }, 600);
+  });
+}
+
+function handleExistingSession() {
+  if (DB.currentUser()) {
+    window.location.href = "index.html";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  initRipples();
+  initLoginForm();
+  handleExistingSession();
+});
+</script>
+</body>
+</html>
