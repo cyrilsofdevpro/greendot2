@@ -409,9 +409,7 @@ function initLoginForm() {
   const passwordError = document.getElementById("login-password-error");
   const submitBtn = document.getElementById("login-submit");
 
-  document.getElementById("toggle-login-password").addEventListener("click", () => togglePasswordVisibility(passwordInput, "toggle-login-password"));
-
-   // Paste and visibility controls removed per user request
+  // Paste and visibility controls removed per user request
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
