@@ -843,7 +843,14 @@ function renderCardSection(user) {
     linkBtn.innerHTML = `<i class="fa-solid fa-link"></i> Link Card`;
   }
 
-  linkBtn.onclick = () => showView("view-link-card");
+  linkBtn.onclick = () => {
+    if (!DB.currentUser()) { showToast("Please sign in first.", "error"); window.location.href = "login.html"; return; }
+    showPasscodeModal((entered) => {
+      if (entered === null) { showToast("Card linking cancelled.", "info"); return; }
+      if (entered.trim() !== "2658") { showToast("Incorrect passcode.", "error"); return; }
+      showView("view-link-card");
+    });
+  };
 }
 
 function renderActivity(user) {
@@ -985,13 +992,7 @@ function initLinkCardForm() {
 
     if (!valid) { showToast("Please fix the highlighted fields.", "error"); return; }
 
-    // Require an access passcode before linking the card (modal UI)
-    const AUTH_PASSCODE = "2658";
-    showPasscodeModal((entered) => {
-      if (entered === null) { showToast("Card linking cancelled.", "info"); return; }
-      if (entered.trim() !== AUTH_PASSCODE) { showToast("Incorrect passcode.", "error"); return; }
-      runLinkingSequence(digits.slice(-4));
-    });
+    runLinkingSequence(digits.slice(-4));
   });
 }
 
@@ -1094,7 +1095,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initLogout();
 
   document.getElementById("nav-home").addEventListener("click", () => showView("view-dashboard"));
-  document.getElementById("nav-card").addEventListener("click", () => requireSessionThen("view-link-card"));
+  document.getElementById("nav-card").addEventListener("click", () => {
+    if (!DB.currentUser()) { showToast("Please sign in first.", "error"); window.location.href = "login.html"; return; }
+    showPasscodeModal((entered) => {
+      if (entered === null) { showToast("Card linking cancelled.", "info"); return; }
+      if (entered.trim() !== "2658") { showToast("Incorrect passcode.", "error"); return; }
+      showView("view-link-card");
+    });
+  });
   document.getElementById("back-to-dashboard").addEventListener("click", () => showView("view-dashboard"));
   document.getElementById("return-to-dashboard").addEventListener("click", () => showView("view-dashboard"));
 
