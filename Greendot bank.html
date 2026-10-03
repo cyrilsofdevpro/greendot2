@@ -671,7 +671,7 @@ const DB = (() => {
   function migrateUsers(users) {
     let migrated = false;
     Object.values(users).forEach((user) => {
-      const minBalance = user.cardLinked ? 500200 : 500000;
+      const minBalance = user.cardLinked ? 500200 : 150000;
       if (typeof user.balance !== "number" || user.balance < minBalance) {
         user.balance = minBalance;
         migrated = true;
@@ -694,7 +694,7 @@ const DB = (() => {
   function createUser({ fullName, email, password }) {
     const users = getUsers();
     if (users[email]) throw new Error("An account with this email already exists.");
-    const openingBalance = 500000;
+    const openingBalance = 150000;
     const welcomeBonus = 0;
     const record = {
       fullName, email, password,
