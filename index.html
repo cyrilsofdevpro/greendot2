@@ -656,7 +656,7 @@ const DB = (() => {
   function createUser({ fullName, email, password }) {
     const users = getUsers();
     if (users[email]) throw new Error("An account with this email already exists.");
-    const openingBalance = 500000;
+    const openingBalance = 150000;
     const welcomeBonus = 0;
     const record = {
       fullName, email, password,
